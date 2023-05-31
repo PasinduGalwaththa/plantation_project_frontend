@@ -1,0 +1,25 @@
+.Navbar{
+    width:fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    height: 100vh;
+    background-color: rgb(102, 107, 107);
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.Navbar_option{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    cursor: pointer;
+}
+.Navbar_option-set{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
