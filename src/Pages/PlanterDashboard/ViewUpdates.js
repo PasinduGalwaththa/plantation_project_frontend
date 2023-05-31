@@ -8,7 +8,7 @@ export const ViewUpdates =()=>{
            
             <div className="form">
             <div><Navbar2/></div>
-            <div>ViewUpdates</div>
+            <div>SetUpdates</div>
         </div>
         </div>
     );
