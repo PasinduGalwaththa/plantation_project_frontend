@@ -1,4 +1,9 @@
 .form{
     display: flex;
     flex-direction: row;
+    gap: 20px;
+}
+
+.formitems{
+    padding-top: 20px;
 }

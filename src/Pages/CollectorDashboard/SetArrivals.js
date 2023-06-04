@@ -10,3 +10,5 @@ export const SetArrivals =()=>{
     </div>
     );
 }
+
+export default SetArrivals;
