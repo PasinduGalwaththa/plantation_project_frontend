@@ -5,6 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import Navbar from "../../Components/Navbar/Navbar";
 import React, { useState } from 'react';
+import axios from "axios";
 
 
 function UpdateForm() {
@@ -29,6 +30,12 @@ function UpdateForm() {
     setValidated(true);
     event.preventDefault();
     console.log(inputs);
+    axios.post('http://127.0.0.1:8000/updates/' , inputs)
+    .then (res => {
+      alert(res.data)
+    }).catch (err => {
+      console.error(err)
+    })
   };
 
 
@@ -46,8 +53,8 @@ function UpdateForm() {
               <Form.Control
                 required
                 type="number"
-                id="estatenumber"
-                value={inputs.estatenumber || ""}
+                id="estate_number"
+                value={inputs.estate_number || ""}
                 onChange={handleChange}
                 
                 //placeholder="Estate Number"
@@ -65,8 +72,8 @@ function UpdateForm() {
               <Form.Control
                 required
                 type="text"
-                id="plantername"
-                value={inputs.plantername || ""}
+                id="planter_name"
+                value={inputs.planter_name || ""}
                 onChange={handleChange}
                 //placeholder="Planter Name"
                 // defaultValue="Name"
@@ -83,10 +90,10 @@ function UpdateForm() {
               <InputGroup hasValidation>
                 <Form.Control
                   type="date"
-                  id="date"
+                  id="collected_date"
                   placeholder="date"
                   aria-describedby="inputGroupPrepend"
-                  value={inputs.date || ""}
+                  value={inputs.collected_date || ""}
                   onChange={handleChange}
                   required
 
