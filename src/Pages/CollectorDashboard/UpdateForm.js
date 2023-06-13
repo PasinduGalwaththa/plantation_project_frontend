@@ -33,6 +33,8 @@ function UpdateForm() {
     axios.post('http://127.0.0.1:8000/updates/' , inputs)
     .then (res => {
       alert(res.data)
+      setInputs({});
+      setValidated(false);
     }).catch (err => {
       console.error(err)
     })
@@ -75,6 +77,7 @@ function UpdateForm() {
                 id="planter_name"
                 value={inputs.planter_name || ""}
                 onChange={handleChange}
+                pattern="^[A-Za-z]+$"
                 //placeholder="Planter Name"
                 // defaultValue="Name"
               />
