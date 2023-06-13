@@ -14,7 +14,7 @@ import MaskedFormControl  from 'react-bootstrap-maskedinput';
 export const RegisterPlanter =()=>{
 
     const [validated, setValidated] = useState(false);
-    const [inputs,setInputs]=useState({});
+    const [inputss,setInputss]=useState({});
   
     const handleChange = (event) => {
       const id = event.target.id;
@@ -30,7 +30,7 @@ export const RegisterPlanter =()=>{
       
 
 
-      setInputs(values => ({...values, [id]: value}))}
+      setInputss(values => ({...values, [id]: value}))}
       
   
    
@@ -44,11 +44,11 @@ export const RegisterPlanter =()=>{
       
       setValidated(true);
       event.preventDefault();
-      console.log(inputs);
+      console.log(inputss);
     //   axios.post('http://127.0.0.1:8000/updates/' , inputs)
     //   .then (res => {
     //     alert(res.data)
-        setInputs({});
+        setInputss({});
        setValidated(false);
     //   }).catch (err => {
     //     console.error(err)
@@ -68,16 +68,17 @@ export const RegisterPlanter =()=>{
             <Row className="mb-3">
                 <FormGroup as={Col} controlId="firstnmae">
                       
-                <FloatingLabel controlId='firstname' label='First Name' className='mb-3'>
+                <FloatingLabel controlId='first_name' label='First Name' className='mb-3'>
                 <Form.Control
                     required
                     type="text"
                     
-                    id="first_name"
-                    value={inputs.first_name || ""}
+                    //id="first_name"
+                    value={inputss.first_name || ""}
                     onChange={handleChange}
                     
                     placeholder="firstname"
+                    autoComplete="first-name"
                     //defaultValue="Mark"
                   />
                   <Form.Control.Feedback type="invalid">
@@ -87,15 +88,16 @@ export const RegisterPlanter =()=>{
 
                 </FormGroup>
                 <FormGroup as={Col} controlId="lastname">
-                <FloatingLabel controlId='Lastname' label='Last Name' className='mb-3'>
+                <FloatingLabel controlId='last_name' label='Last Name' className='mb-3'>
                 <Form.Control
                     required
                     type="text"
-                    id="last_name"
-                    value={inputs.last_name || ""}
+                    //id="last_name"
+                    value={inputss.last_name || ""}
                     onChange={handleChange}
                     
-                    placeholder="firstname"
+                    placeholder="lastname"
+                    autoComplete="last-name"
                     //defaultValue="Mark"
                   
                   />
@@ -127,11 +129,12 @@ export const RegisterPlanter =()=>{
                 <Form.Control
                   required
                   type="text"
-                  id="adress"
-                  value={inputs.adress || ""}
+                  //id="address"
+                  value={inputss.address || ""}
                   onChange={handleChange}
                   
                   placeholder="adress"
+                  autoComplete="address"
                   // defaultValue="Name"
                 />
                 <Form.Control.Feedback type="invalid">
@@ -154,13 +157,14 @@ export const RegisterPlanter =()=>{
 
                     type="tel"
                     mask='1111111111'
-                    id="telephone"
+                    //id="telephone"
                     placeholder="telephone"
+                    autoComplete="telephone"
                     //pattern="07\d{8}"
                      
                     
                     //aria-describedby="inputGroupPrepend"
-                    value={inputs.telephone || ""}
+                    value={inputss.telephone || ""}
                     onChange={handleChange}
                     required
   
@@ -184,10 +188,11 @@ export const RegisterPlanter =()=>{
                     type="string"
                     mask='111111111V'
                     placeholder="NIC"
-                    id="nic"
+                    //id="nic"
+                    autoComplete="nic"
                     //aria-describedby="inputGroupPrepend"
                     
-                    value={inputs.nic || ""}
+                    value={inputss.nic || ""}
                     onChange={handleChange}
                     required
                   />
