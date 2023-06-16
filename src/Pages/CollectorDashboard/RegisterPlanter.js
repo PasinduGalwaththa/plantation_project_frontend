@@ -9,7 +9,7 @@ import Row from "react-bootstrap/Row";
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import FormGroup from 'react-bootstrap/esm/FormGroup';
 import MaskedFormControl  from 'react-bootstrap-maskedinput';
-//import axios from "axios";
+import axios from "axios";
 
 export const RegisterPlanter =()=>{
 
@@ -45,14 +45,14 @@ export const RegisterPlanter =()=>{
       setValidated(true);
       event.preventDefault();
       console.log(inputss);
-    //   axios.post('http://127.0.0.1:8000/updates/' , inputs)
-    //   .then (res => {
-    //     alert(res.data)
+     axios.post('http://127.0.0.1:8000/planter/' , inputss)
+      .then (res => {
+        alert(res.data)
         setInputss({});
        setValidated(false);
-    //   }).catch (err => {
-    //     console.error(err)
-    //   })
+      }).catch (err => {
+        console.error(err)
+      })
     };
   
   
@@ -66,7 +66,7 @@ export const RegisterPlanter =()=>{
           <h2>Register planter by collector </h2>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
-                <FormGroup as={Col} controlId="firstnmae">
+                <FormGroup as={Col} controlId="first_nmae">
                       
                 <FloatingLabel controlId='first_name' label='First Name' className='mb-3'>
                 <Form.Control
@@ -87,7 +87,7 @@ export const RegisterPlanter =()=>{
                   </FloatingLabel>
 
                 </FormGroup>
-                <FormGroup as={Col} controlId="lastname">
+                <FormGroup as={Col} controlId="last_name">
                 <FloatingLabel controlId='last_name' label='Last Name' className='mb-3'>
                 <Form.Control
                     required
