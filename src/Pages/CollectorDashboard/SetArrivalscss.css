@@ -1,0 +1,61 @@
+
+.app-container {
+    
+    flex-direction: row-reverse;
+    gap:50px;
+    padding: 12px;
+  }
+  
+  table {
+    border-spacing: 5px;
+    width: 100%;
+  }
+  
+  th,
+  td {
+    border: 3px solid #0f0f0f;
+    text-align: left;
+    padding: 5px;
+    font-size: 10px;
+  }
+  
+  th {
+    background-color: rgb(250, 117, 117);
+     border-spacing:5px ;
+  }
+  
+  td {
+    background-color: rgb(205, 235, 253);
+  }
+  
+  form {
+    float: left;
+    gap: 5px;
+  }
+  
+  form td:last-child {
+    
+    justify-content: space-evenly;
+  }
+  
+  form * {
+    font-size: 18px;
+  }
+
+  .Edit{
+    padding: 0%;
+  }
+
+  .addCollectionPoint{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .div1{
+    margin-bottom: 20px;
+  }
+
+  .currentDay{
+    color: rgb(171, 99, 238);
+  }
