@@ -1,4 +1,4 @@
-import WeatherAPI from "../../Components/WeatherAPI";
+import Geolocation from "../../Components/Geolocation";
 
 import Navbar2 from "../../Components/Navbar/Navbar";
 
@@ -8,7 +8,7 @@ export const WeatherPlanter = () => {
             
         <div><Navbar2/></div>
         <div>
-        <WeatherAPI />
+        <Geolocation />
         </div>
 
         </div>
