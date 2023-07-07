@@ -1,4 +1,4 @@
-import React, {useState,Fragment}from "react";
+import React, {useState,Fragment,useEffect}from "react";
 import './UpdateForm.css';
 import Navbar from "../../Components/Navbar/Navbar";
 import moment from 'moment';
@@ -18,17 +18,26 @@ import ReadOnlyRow from "../../Components/ReadOnlyRow";
 import EditableRow from "../../Components/EditableRow";
 
 export const SetArrivals =()=>{
+    const [currentDay, setCurrentDay] = useState("");
     const [contacts, setContacts] = useState(new Array(0));
     const [addFormData,setAddFormData]=useState({
       collectionpointname:'',
       collectionpoint:'',
-      arrivaltime:''
+      arrivaltime:'',
+      day:'',
     });
+
+    useEffect(() => {
+      // Get the current day when the component mounts
+      const day = moment().format("dddd");
+      setCurrentDay(day);
+    }, []);
 
     const [editFormData,setEditFormData]=useState({
       collectionpointname:'',
       collectionpoint:'',
-      arrivaltime:''
+      arrivaltime:'',
+      day:'',
 
     })
 
@@ -67,18 +76,28 @@ export const SetArrivals =()=>{
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       
-      console.log(addFormData);
+      //console.log(addFormData);
       event.preventDefault();
 
       const newContact={
         //id:nanoid(),
         collectionpointname:addFormData.collectionpointname,
         collectionpoint:addFormData.collectionpoint,
-        arrivaltime:addFormData.arrivaltime
+        arrivaltime:addFormData.arrivaltime,
+        day:currentDay,
+
       }
+      console.log(newContact);
 
       const newContacts= [...contacts,newContact];
       setContacts(newContacts);
+
+      setAddFormData({
+        collectionpointname: "",
+        collectionpoint: "",
+        arrivaltime: "",
+        day: "", // Clear the 'day' property
+      });
       
 
      
@@ -91,7 +110,8 @@ export const SetArrivals =()=>{
         id:editContactId,
         collectionpointname:editFormData.collectionpointname,
         collectionpoint:editFormData.collectionpoint,
-        arrivaltime:editFormData.arrivaltime
+        arrivaltime:editFormData.arrivaltime,
+        day:editFormData.day
       }
       const newContacts=[...contacts];
       const index = contacts.findIndex((contact)=>contact.id===editContactId);
@@ -107,7 +127,8 @@ export const SetArrivals =()=>{
       const formValues = {
         collectionpointname:contact.collectionpointname,
         collectionpoint:contact.collectionpoint,
-        arrivaltime:contact.arrivaltime
+        arrivaltime:contact.arrivaltime,
+        day:contact.day
 
         
   
@@ -139,6 +160,8 @@ export const SetArrivals =()=>{
       <div><Navbar /></div>
       <div>
       <div className="div1"><h1>Set Arrivals by collector</h1></div>
+      <div>Current Day: {currentDay}</div>
+     
       <div className="addCollectionPoint">
         <h2>Add a collection point</h2>
         <form onSubmit={handleSubmit}>
