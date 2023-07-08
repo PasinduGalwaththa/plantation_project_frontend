@@ -18,9 +18,10 @@ import ReadOnlyRow from "../../Components/ReadOnlyRow";
 import EditableRow from "../../Components/EditableRow";
 
 export const SetArrivals =()=>{
-    const [currentDay, setCurrentDay] = useState("");
+    const [currentDay, setCurrentDay] = useState("");// Get the current day
     const [contacts, setContacts] = useState(new Array(0));
     const [addFormData,setAddFormData]=useState({
+      
       collectionpointname:'',
       collectionpoint:'',
       arrivaltime:'',
@@ -34,6 +35,7 @@ export const SetArrivals =()=>{
     }, []);
 
     const [editFormData,setEditFormData]=useState({
+      
       collectionpointname:'',
       collectionpoint:'',
       arrivaltime:'',
@@ -73,24 +75,36 @@ export const SetArrivals =()=>{
       
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       const form = event.currentTarget;
       
       //console.log(addFormData);
       event.preventDefault();
 
       const newContact={
-        //id:nanoid(),
+        
+        
         collectionpointname:addFormData.collectionpointname,
         collectionpoint:addFormData.collectionpoint,
         arrivaltime:addFormData.arrivaltime,
         day:currentDay,
 
       }
+      
       console.log(newContact);
 
+      axios.post('http://127.0.0.1:8000/setarrivals/' , newContact )
+      .then (res => {
+      alert(res.data)
+      
+      
+    }).catch (err => {
+      console.error(err)
+    })
       const newContacts= [...contacts,newContact];
       setContacts(newContacts);
+
+
 
       setAddFormData({
         collectionpointname: "",
@@ -149,6 +163,17 @@ export const SetArrivals =()=>{
       setContacts(newContacts);
 
     }
+    useEffect(() => {
+      
+      axios.get('http://127.0.0.1:8000/setarrivals/')
+      .then(res => {
+          console.log(res.data)
+          setContacts(res.data)
+          
+      })
+  
+    
+  }, [])
 
     
     
@@ -206,8 +231,8 @@ export const SetArrivals =()=>{
           </tr>
           </thead>
           <tbody>
-            {contacts.map((contact,index)=>(
-              <React.Fragment key={index}>
+            {contacts.map((contact)=>(
+              <React.Fragment key={contact.id}>
                 {editContactId===contact.id?(
                 <EditableRow  
                 editFormData={editFormData} 
