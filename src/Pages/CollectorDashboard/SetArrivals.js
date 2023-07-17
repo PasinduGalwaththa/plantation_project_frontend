@@ -20,6 +20,12 @@ import EditableRow from "../../Components/EditableRow";
 export const SetArrivals = () => {
   const [currentDay, setCurrentDay] = useState(""); // Get the current day
   const [contacts, setContacts] = useState(new Array(0));
+
+  
+ 
+ 
+
+
   const [addFormData, setAddFormData] = useState({
     collectionpointname: "",
     collectionpoint: "",
@@ -31,6 +37,13 @@ export const SetArrivals = () => {
     // Get the current day when the component mounts
     const day = moment().format("dddd");
     setCurrentDay(day);
+
+    
+
+
+
+
+
   }, []);
 
   const [editFormData, setEditFormData] = useState({

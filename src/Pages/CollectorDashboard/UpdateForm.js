@@ -6,17 +6,39 @@ import Row from "react-bootstrap/Row";
 import Navbar from "../../Components/Navbar/Navbar";
 import React, { useState } from 'react';
 import axios from "axios";
+import { useEffect } from "react";
 
 
 function UpdateForm() {
   const [validated, setValidated] = useState(false);
   const [inputs,setInputs]=useState({});
 
+  const [data, setData] = useState([]);
+
+  
+  const fetchData = async (estateNumber) => {
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/planter/${estateNumber}`);
+      setData(response.data);
+      console.log(response.data);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+
   const handleChange = (event) => {
     const id = event.target.id;
     const value = event.target.value;
     setInputs(values => ({...values, [id]: value}))
   }
+
+  const handleSearchClick = () => {
+    fetchData(inputs.estate_number);
+    
+}
 
  
 
@@ -58,19 +80,21 @@ function UpdateForm() {
                 id="estate_number"
                 value={inputs.estate_number || ""}
                 onChange={handleChange}
-                
                 //placeholder="Estate Number"
                 //defaultValue="Mark"
               />
+      
               <Form.Control.Feedback type="invalid">
                 Please enter estate number here.
               </Form.Control.Feedback>
             </Form.Group>
+            <Button onClick={handleSearchClick}>Search</Button>
+            
           </Row>
 
           <Row className="mb-3">
             <Form.Group as={Col} md="10" >
-              <Form.Label>Planter Name</Form.Label>
+              <Form.Label>{data.first_name ? data.first_name  + " " + data.last_name : "planter name"}</Form.Label>
               <Form.Control
                 required
                 type="text"

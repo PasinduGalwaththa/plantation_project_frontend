@@ -178,6 +178,38 @@ export const RegisterPlanter =()=>{
                 
               </Form.Group>
             </Row>
+
+            <Row className="mb-3">
+              <Form.Group as={Col} md="8" >
+                <FloatingLabel controlId='estnumber' label='est number' className='mb-3'>
+             
+                
+                  < MaskedFormControl
+
+
+                    type="number"
+                    mask='1111'
+                    //id="telephone"
+                    placeholder="est number"
+                    autoComplete="est number"
+                    //pattern="07\d{8}"
+                     
+                    
+                    //aria-describedby="inputGroupPrepend"
+                    value={inputss.estnumber || ""}
+                    onChange={handleChange}
+                    required
+  
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter valid.
+                  </Form.Control.Feedback>
+                
+
+                </FloatingLabel>
+                
+              </Form.Group>
+            </Row>
   
             <Row className="mb-3">
               <Form.Group as={Col} md="8" >
