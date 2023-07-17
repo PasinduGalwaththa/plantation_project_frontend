@@ -113,11 +113,22 @@ export const SetArrivals = () => {
       arrivaltime: editFormData.arrivaltime,
       day: editFormData.day,
     };
-    const newContacts = [...contacts];
-    const index = contacts.findIndex((contact) => contact.id === editContactId);
-    newContacts[index] = editedContact;
-    setContacts(newContacts);
-    setEditContactId(null);
+    console.log('Edited Contact:', editedContact); 
+    axios
+    .put(`http://127.0.0.1:8000/setarrivals/update/${editContactId}/`, editedContact)
+    .then((res) => {
+      console.log(res.data);
+      setContacts((prevContacts) => {
+        const updatedContacts = [...prevContacts];
+        const index = updatedContacts.findIndex((contact) => contact.id === editContactId);
+        updatedContacts[index] = editedContact;
+        return updatedContacts;
+      });
+      setEditContactId(null);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   };
 
   const handleEditClick = (event, contact) => {
@@ -130,6 +141,7 @@ export const SetArrivals = () => {
       arrivaltime: contact.arrivaltime,
       day: contact.day,
     };
+    //console.log('Form Values:', formValues);
     setEditFormData(formValues);
   };
 
