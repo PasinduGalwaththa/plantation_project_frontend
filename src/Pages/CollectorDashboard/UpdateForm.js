@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import Navbar from "../../Components/Navbar/Navbar";
+
 import React, { useState } from 'react';
 import axios from "axios";
 import { useEffect } from "react";
@@ -65,37 +65,43 @@ function UpdateForm() {
 
   return (
     <div className="form">
-      <div>
-        <Navbar />
-      </div>
+     
       <div className="formitems">
         <h2>Update collection</h2>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-          <Row className="mb-3">
-            <Form.Group as={Col} md="7" >
-              <Form.Label > Estate Number</Form.Label>
-              <Form.Control
-                required
-                type="number"
-                id="estate_number"
-                value={inputs.estate_number || ""}
-                onChange={handleChange}
-                //placeholder="Estate Number"
-                //defaultValue="Mark"
-              />
-      
-              <Form.Control.Feedback type="invalid">
-                Please enter estate number here.
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Button onClick={handleSearchClick}>Search</Button>
-            
-          </Row>
+        <div className="estnum_search">
+            <div className="estatenumber">
+              <Row className="mb-3" >
+                <Form.Group as={Col} md="7">
+                  <Form.Label>Estate Number</Form.Label>
+                  <Form.Control
+                    required
+                    type="number"
+                    id="estate_number"
+                    value={inputs.estate_number || ""}
+                    onChange={handleChange}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter estate number here.
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Row>
+            </div>
+         <div className="search">
+         <Button onClick={handleSearchClick}>Search</Button>
+
+         </div>
+
+         </div>
+         
+        
+         
+          
 
           <Row className="mb-3">
             <Form.Group as={Col} md="10" >
-              <Form.Label>{data.first_name ? data.first_name  + " " + data.last_name : "planter name"}</Form.Label>
-              <Form.Control
+              <Form.Label>{data.first_name ? data.first_name  + " " + data.last_name : ""}</Form.Label>
+              {/* <Form.Control
                 required
                 type="text"
                 id="planter_name"
@@ -104,7 +110,7 @@ function UpdateForm() {
                 pattern="^[A-Za-z]+$"
                 //placeholder="Planter Name"
                 // defaultValue="Name"
-              />
+              /> */}
               <Form.Control.Feedback type="invalid">
                 Please enter name here.
               </Form.Control.Feedback>
@@ -152,12 +158,12 @@ function UpdateForm() {
             </Form.Group>
           </Row>
           <Form.Group className="mb-3">
-            <Form.Check
+            {/* <Form.Check
               required
               label="rechecked"
               feedback="You must agree before submitting."
               feedbackType="invalid"
-            />
+            /> */}
           </Form.Group>
           <Button type="submit">Submit </Button>
         </Form>

@@ -7,3 +7,23 @@
 .formitems{
     padding-top: 20px;
 }
+
+.estnum_search {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.estatenumber {
+  flex: 1;
+}
+
+.search {
+  flex: 0;
+}
+
+
+
+
+
+

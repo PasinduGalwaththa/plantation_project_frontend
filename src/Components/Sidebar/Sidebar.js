@@ -1,13 +1,10 @@
-//navbar2 is planter
+//navbar is collector dashboard
 import React from "react";
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import RateReviewIcon from '@mui/icons-material/RateReview';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
-import AnalyticsIcon from '@mui/icons-material/Analytics';
-import './Navbar.css'
+import './Sidebar.css'
 
-export const Navbar2 = () =>{
+export const Sidebar = () =>{
     return(
         <div className="Navbar">
             <div className="Navbar_logo">
@@ -18,23 +15,23 @@ export const Navbar2 = () =>{
                     <div className="Navbar_option_icon">
                         <HowToRegIcon/>
                     </div>
-                    <div className="Navbar_option_text">View Update</div>
+                    <div className="Navbar_option_text">Update</div>
                 </div>
                 <div className="Navbar_option">
                     <div className="Navbar_option_icon">
-                    <RAccessTimeIcon/>
+                    <RateReviewIcon/>
                     </div>
-                    <div className="Navbar_option_text">View Arrivals</div>
+                    <div className="Navbar_option_text">Set Arrivals</div>
                 </div>
                 <div className="Navbar_option">
                     <div className="Navbar_option_icon">
-                        <AnalyticsIcon/>
+                        <RateReviewIcon/>
                     </div>
-                    <div className="Navbar_option_text">Predictions</div>
+                    <div className="Navbar_option_text">Planter Registration</div>
                 </div>
                 <div className="Navbar_option">
                     <div className="Navbar_option_icon">
-                        <HThunderstormIconn/>
+                        <HowToRegIcon/>
                     </div>
                     <div className="Navbar_option_text">Weather</div>
                 </div>
@@ -43,4 +40,4 @@ export const Navbar2 = () =>{
     );
 }
 
-export default Navbar2;
+export default Sidebar;

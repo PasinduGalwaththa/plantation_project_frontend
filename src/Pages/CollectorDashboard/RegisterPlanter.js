@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from "../../Components/Navbar/Navbar";
+
 import './UpdateForm.css';
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -59,9 +59,7 @@ export const RegisterPlanter =()=>{
 
     return(
         <div className="form">
-        <div>
-          <Navbar />
-        </div>
+       
         <div className="formitems">
           <h2>Register planter by collector </h2>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>

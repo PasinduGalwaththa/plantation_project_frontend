@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from "react";
 import './PlanterDashboard.css'
-import Navbar2 from "../../Components/Navbar/Navbar";
+
 import axios from "axios";
 
 export const ViewUpdates =()=>{
@@ -23,7 +23,7 @@ export const ViewUpdates =()=>{
         <div>
            
             <div className="form">
-            <div><Navbar2/></div>
+            
             <div>
             {values.map((item) => (
         <table key={item.id} style={{ border: "1px solid black" , margin: "10px"}}>

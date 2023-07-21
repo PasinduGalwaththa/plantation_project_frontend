@@ -1,6 +1,8 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./UpdateForm.css";
-import Navbar from "../../Components/Navbar/Navbar";
+
+
+import Table from 'react-bootstrap/Table';
 import moment from "moment";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
@@ -48,7 +50,7 @@ export const SetArrivals = () => {
 
   const [editFormData, setEditFormData] = useState({
     collectionpointname: "",
-    collectionpoint: "",
+    //collectionpoint: "",
     arrivaltime: "",
     day: "",
   });
@@ -89,7 +91,7 @@ export const SetArrivals = () => {
 
     const newContact = {
       collectionpointname: addFormData.collectionpointname,
-      collectionpoint: addFormData.collectionpoint,
+      //collectionpoint: addFormData.collectionpoint,
       arrivaltime: addFormData.arrivaltime,
       day: currentDay,
     };
@@ -110,7 +112,7 @@ export const SetArrivals = () => {
 
     setAddFormData({
       collectionpointname: "",
-      collectionpoint: "",
+      //collectionpoint: "",
       arrivaltime: "",
       day: "", // Clear the 'day' property
     });
@@ -122,7 +124,7 @@ export const SetArrivals = () => {
     const editedContact = {
       id: editContactId,
       collectionpointname: editFormData.collectionpointname,
-      collectionpoint: editFormData.collectionpoint,
+      //collectionpoint: editFormData.collectionpoint,
       arrivaltime: editFormData.arrivaltime,
       day: editFormData.day,
     };
@@ -150,7 +152,7 @@ export const SetArrivals = () => {
 
     const formValues = {
       collectionpointname: contact.collectionpointname,
-      collectionpoint: contact.collectionpoint,
+      //collectionpoint: contact.collectionpoint,
       arrivaltime: contact.arrivaltime,
       day: contact.day,
     };
@@ -186,10 +188,16 @@ export const SetArrivals = () => {
 
   return (
     <div className="form">
+       <div>
+        
+
+        </div>
+     
       <div>
-        <Navbar />
-      </div>
-      <div>
+       
+        
+      
+        
         <div className="div1">
           <h1>Set Arrivals by collector</h1>
         </div>
@@ -198,39 +206,47 @@ export const SetArrivals = () => {
         <div className="addCollectionPoint">
           <h2>Add a collection point</h2>
           <form onSubmit={handleSubmit}>
+        <div className="row g-3 align-items-center">
+          <div className="col-md-6">
+            <label htmlFor="collectionpointname" className="form-label">Collection Point Name</label>
             <input
               type="text"
               name="collectionpointname"
               required
-              placeholder="enter"
+              className="form-control"
+              placeholder="Enter collection point name"
               onChange={handleAddFormChange}
             />
-            <input
-              type="number"
-              name="collectionpoint"
-              required
-              placeholder="enter cp"
-              onChange={handleAddFormChange}
-            />
+          </div>
 
+
+          <div className="col-md-6">
+            <label htmlFor="arrivaltime" className="form-label">Arrival Time</label>
             <input
               type="time"
               name="arrivaltime"
               required
-              placeholder="enter time"
+              className="form-control"
+              placeholder="Enter arrival time"
               onChange={handleAddFormChange}
             />
-            <button type="submit">Add</button>
-          </form>
+          </div>
+          <div className="col-md-12 mt-3">
+          <Button variant="outline-primary" type="submit">Add</Button>
+        </div>
+        </div>
+
+       
+      </form>
         </div>
 
         <div className="app-container">
           <form onSubmit={handleEditformSubmit}>
-            <table>
+            <Table  bordered hover variant="blue">
               <thead>
                 <tr>
                   <th>collectionpointname</th>
-                  <th>collectionpoint</th>
+                  {/* <th>collectionpoint</th> */}
                   <th>arrivaltime</th>
                   <th>Actions</th>
                 </tr>
@@ -256,7 +272,7 @@ export const SetArrivals = () => {
                     </React.Fragment>
                   ))}
               </tbody>
-            </table>
+            </Table>
           </form>
         </div>
       </div>

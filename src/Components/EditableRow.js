@@ -14,7 +14,7 @@ const EditableRow=({editFormData,handleEditFormChange,handleCancelClick})=>{
                 
                 />
             </td>
-            <td>
+            {/* <td>
             <input
                 type="number"
                 required
@@ -24,7 +24,7 @@ const EditableRow=({editFormData,handleEditFormChange,handleCancelClick})=>{
                 onChange={handleEditFormChange}
                 />
 
-            </td>
+            </td> */}
             <td>
             <input
                 type="time"
