@@ -7,6 +7,8 @@ import RegisterPlanter from './Pages/CollectorDashboard/RegisterPlanter';
 import SetArrivals from './Pages/CollectorDashboard/SetArrivals';
 import Predictions from './Pages/PlanterDashboard/Prediction';
 import ViewUpdates from './Pages/PlanterDashboard/ViewUpdates';
+import Login from './Pages/Login/Login';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import WeatherAPI from './Components/WeatherAPI';
 import Geolocation from './Components/Geolocation';
@@ -24,6 +26,8 @@ function App() {
         <Route path='/setarrivals' element={<SetArrivals/>}/>
         <Route path='/prediction' element={<Predictions/>}/>
         <Route path='/viewupdates' element={<ViewUpdates/>}/>
+        <Route path='/login' element={<Login/>}/>
+        
         
 
 
