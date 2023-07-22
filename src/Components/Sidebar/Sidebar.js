@@ -10,7 +10,8 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';;
+
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 const App = () => {
   return (
     <div style={{ display: "flex", height: "100vh" }}>
@@ -20,10 +21,10 @@ const App = () => {
              
             <h2>QUICKPAY</h2>
           </MenuItem>
-          <MenuItem  icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
-          <MenuItem icon={<ViewListIcon/>} > View Updates</MenuItem>
-          <MenuItem icon={<QueryStatsIcon/>}> Predictions </MenuItem>
-          <MenuItem icon={<WbSunnyIcon/>}> Weather </MenuItem>
+          <MenuItem component={<Link to="/planterdashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
+          <MenuItem component={<Link to="/viewupdates" className="link" />} icon={<ViewListIcon/>} > View Updates</MenuItem>
+          <MenuItem component={<Link to="/prediction" className="link" />} icon={<QueryStatsIcon/>}> Predictions </MenuItem>
+          <MenuItem component={<Link to="/weatherplanter" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
           
         </Menu>
       </Sidebar>
@@ -35,11 +36,13 @@ const App = () => {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <div>
-      <ProSidebarProvider>
-        <App />
-      </ProSidebarProvider>
-    </div>
+     <BrowserRouter> {/* Wrap the App component with BrowserRouter */}
+      <div>
+        <ProSidebarProvider>
+          <App />
+        </ProSidebarProvider>
+      </div>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

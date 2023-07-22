@@ -8,6 +8,7 @@ import SetArrivals from './Pages/CollectorDashboard/SetArrivals';
 import Predictions from './Pages/PlanterDashboard/Prediction';
 import ViewUpdates from './Pages/PlanterDashboard/ViewUpdates';
 import Login from './Pages/Login/Login';
+import WeatherAPI from './Components/WeatherAPI';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import WeatherAPI from './Components/WeatherAPI';
@@ -27,6 +28,7 @@ function App() {
         <Route path='/prediction' element={<Predictions/>}/>
         <Route path='/viewupdates' element={<ViewUpdates/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/weather' element={<WeatherAPI/>}/>
 
         
         
