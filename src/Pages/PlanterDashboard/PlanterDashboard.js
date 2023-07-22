@@ -1,17 +1,10 @@
-import React from "react";
-import './PlanterDashboard.css'
+import React from 'react'
+import Sidebar from '../../Components/Sidebar/Sidebar'
 
-
-export const PlanterDashboard =()=>{
-    return(
-        <div>
-           
-            <div className="form">
-           
-            <div>PlanterDashboard</div>
-        </div>
-        </div>
-    );
+export default function PlanterDashboard() {
+  return (
+    <div>
+        <div><Sidebar/></div>
+    </div>
+  )
 }
-
-export default PlanterDashboard;

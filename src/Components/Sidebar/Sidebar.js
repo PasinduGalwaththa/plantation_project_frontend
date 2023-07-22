@@ -1,43 +1,46 @@
-//navbar is collector dashboard
 import React from "react";
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import RateReviewIcon from '@mui/icons-material/RateReview';
-import './Sidebar.css'
+import ReactDOM from "react-dom/client";
+//import "./index.css";
+import './Sidebar.css';
 
-export const Sidebar = () =>{
-    return(
-        <div className="Navbar">
-            <div className="Navbar_logo">
-                HARITHA AGROS
-            </div>
-            <div className="Navbar_option-set">
-                <div className="Navbar_option">
-                    <div className="Navbar_option_icon">
-                        <HowToRegIcon/>
-                    </div>
-                    <div className="Navbar_option_text">Update</div>
-                </div>
-                <div className="Navbar_option">
-                    <div className="Navbar_option_icon">
-                    <RateReviewIcon/>
-                    </div>
-                    <div className="Navbar_option_text">Set Arrivals</div>
-                </div>
-                <div className="Navbar_option">
-                    <div className="Navbar_option_icon">
-                        <RateReviewIcon/>
-                    </div>
-                    <div className="Navbar_option_text">Planter Registration</div>
-                </div>
-                <div className="Navbar_option">
-                    <div className="Navbar_option_icon">
-                        <HowToRegIcon/>
-                    </div>
-                    <div className="Navbar_option_text">Weather</div>
-                </div>
-            </div>
-        </div>
-    );
-}
+import { ProSidebarProvider } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+import SpeedOutlinedIcon from '@mui/icons-material/SpeedOutlined';
+import ViewListIcon from '@mui/icons-material/ViewList';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';;
+const App = () => {
+  return (
+    <div style={{ display: "flex", height: "100vh" }}>
+      <Sidebar className="app">
+        <Menu>
+          <MenuItem className="menu1" icon={<MenuRoundedIcon />}>
+             
+            <h2>QUICKPAY</h2>
+          </MenuItem>
+          <MenuItem  icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
+          <MenuItem icon={<ViewListIcon/>} > View Updates</MenuItem>
+          <MenuItem icon={<QueryStatsIcon/>}> Predictions </MenuItem>
+          <MenuItem icon={<WbSunnyIcon/>}> Weather </MenuItem>
+          
+        </Menu>
+      </Sidebar>
+      <h1>WELCOME TO QUICKPAY</h1>
+    </div>
+  );
+};
 
-export default Sidebar;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <div>
+      <ProSidebarProvider>
+        <App />
+      </ProSidebarProvider>
+    </div>
+  </React.StrictMode>
+);
+
+export default App;

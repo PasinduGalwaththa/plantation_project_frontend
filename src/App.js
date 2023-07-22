@@ -27,6 +27,7 @@ function App() {
         <Route path='/prediction' element={<Predictions/>}/>
         <Route path='/viewupdates' element={<ViewUpdates/>}/>
         <Route path='/login' element={<Login/>}/>
+
         
         
 
