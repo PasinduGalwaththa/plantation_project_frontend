@@ -5,6 +5,7 @@ export default function PlanterDashboard() {
   return (
     <div>
         <div><Sidebar/></div>
+        <div>planter dashboard</div>
     </div>
   )
 }

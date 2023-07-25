@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./UpdateForm.css";
-
+import Sidebar1 from '../../Components/Sidebar/Sidebar1'
 
 import Table from 'react-bootstrap/Table';
 import moment from "moment";
@@ -188,11 +188,7 @@ export const SetArrivals = () => {
 
   return (
     <div className="form">
-       <div>
-        
-
-        </div>
-     
+       <div><Sidebar1/></div>
       <div>
        
         

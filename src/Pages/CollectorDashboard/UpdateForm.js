@@ -3,10 +3,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import Sidebar1 from '../../Components/Sidebar/Sidebar1'
 
 import React, { useState } from 'react';
 import axios from "axios";
 import { useEffect } from "react";
+import { Sidebar } from "react-pro-sidebar";
 
 
 function UpdateForm() {
@@ -14,6 +16,14 @@ function UpdateForm() {
   const [inputs,setInputs]=useState({});
 
   const [data, setData] = useState([]);
+
+  const getCurrentDate = () => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
 
   
   const fetchData = async (estateNumber) => {
@@ -64,16 +74,16 @@ function UpdateForm() {
 
 
   return (
-    <div className="form">
-     
+    <div className="updateform">
+      <div><Sidebar1/></div>
+      <div className="container">   
       <div className="formitems">
         <h2>Update collection</h2>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <div className="estnum_search">
-            <div className="estatenumber">
-              <Row className="mb-3" >
                 <Form.Group as={Col} md="7">
                   <Form.Label>Estate Number</Form.Label>
+                  <di className="estnum_search_estate">
                   <Form.Control
                     required
                     type="number"
@@ -84,19 +94,13 @@ function UpdateForm() {
                   <Form.Control.Feedback type="invalid">
                     Please enter estate number here.
                   </Form.Control.Feedback>
+                  <Button onClick={handleSearchClick}>Search</Button>
+                  </di>
+                  
                 </Form.Group>
-              </Row>
-            </div>
-         <div className="search">
-         <Button onClick={handleSearchClick}>Search</Button>
+      
 
-         </div>
-
-         </div>
-         
-        
-         
-          
+         </div>          
 
           <Row className="mb-3">
             <Form.Group as={Col} md="10" >
@@ -168,7 +172,14 @@ function UpdateForm() {
           <Button type="submit">Submit </Button>
         </Form>
       </div>
+      <div>
+        pasindu
+      </div>
+      </div>
+
+   
     </div>
+
   );
 }
 

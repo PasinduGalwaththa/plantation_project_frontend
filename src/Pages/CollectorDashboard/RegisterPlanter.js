@@ -27,10 +27,16 @@ export const RegisterPlanter =()=>{
       return; // Skip updating the state if input contains non-letter characters
     }
   }
+
       
 
 
-      setInputss(values => ({...values, [id]: value}))}
+      setInputss(values => ({...values, [id]: value}))
+      if (id === 'estate') {
+        setInputss(values => ({ ...values, estate: value }));
+      }
+    }
+      
       
   
    
@@ -45,6 +51,7 @@ export const RegisterPlanter =()=>{
       setValidated(true);
       event.preventDefault();
       console.log(inputss);
+      
      axios.post('http://127.0.0.1:8000/planter/' , inputss)
       .then (res => {
         alert(res.data)
@@ -64,7 +71,7 @@ export const RegisterPlanter =()=>{
           <h2>Register planter by collector </h2>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
-                <FormGroup as={Col} controlId="first_nmae">
+                <FormGroup as={Col} >
                       
                 <FloatingLabel controlId='first_name' label='First Name' className='mb-3'>
                 <Form.Control
@@ -85,7 +92,7 @@ export const RegisterPlanter =()=>{
                   </FloatingLabel>
 
                 </FormGroup>
-                <FormGroup as={Col} controlId="last_name">
+                <FormGroup as={Col} >
                 <FloatingLabel controlId='last_name' label='Last Name' className='mb-3'>
                 <Form.Control
                     required
@@ -127,7 +134,7 @@ export const RegisterPlanter =()=>{
                 <Form.Control
                   required
                   type="text"
-                  //id="address"
+                  
                   value={inputss.address || ""}
                   onChange={handleChange}
                   
@@ -178,35 +185,40 @@ export const RegisterPlanter =()=>{
             </Row>
 
             <Row className="mb-3">
-              <Form.Group as={Col} md="8" >
-                <FloatingLabel controlId='estnumber' label='est number' className='mb-3'>
-             
-                
-                  < MaskedFormControl
+            <Form.Group as={Col} md="8">
+              <FloatingLabel controlId='estatename' label='Estate Name' className='mb-3'>
+                <Form.Control
+                  required
+                  type="text"
+                  value={inputss.estatename || ""}
+                  onChange={handleChange}
+                  placeholder="estate name"
+                  autoComplete="estate name"
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please enter estate name here.
+                </Form.Control.Feedback>
+              </FloatingLabel>
+            </Form.Group>
+              <Form.Group as={Col} md="8">
+              <FloatingLabel controlId='teatype' label='Tea Type' className='mb-3'>
+                <Form.Control
+                  required
+                  type="text"
+
+                  value={inputss.teatype || ""}
+                  onChange={handleChange}
+                  placeholder="tea type"
+                  autoComplete="tea type"
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please enter tea type here.
+                </Form.Control.Feedback>
+              </FloatingLabel>
+            </Form.Group>
 
 
-                    type="number"
-                    mask='1111'
-                    //id="telephone"
-                    placeholder="est number"
-                    autoComplete="est number"
-                    //pattern="07\d{8}"
-                     
-                    
-                    //aria-describedby="inputGroupPrepend"
-                    value={inputss.estnumber || ""}
-                    onChange={handleChange}
-                    required
-  
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please enter valid.
-                  </Form.Control.Feedback>
-                
-
-                </FloatingLabel>
-                
-              </Form.Group>
+              
             </Row>
   
             <Row className="mb-3">
@@ -235,14 +247,7 @@ export const RegisterPlanter =()=>{
                
               </Form.Group>
             </Row>
-            {/* <Form.Group className="mb-3">
-              <Form.Check
-                required
-                label="rechecked"
-                feedback="You must agree before submitting."
-                feedbackType="invalid"
-              />
-            </Form.Group> */}
+           
             <Button type="submit">Submit </Button>
           </Form>
         </div>
