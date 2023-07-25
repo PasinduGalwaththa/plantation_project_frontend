@@ -29,7 +29,7 @@ function UpdateForm() {
   const fetchData = async (estateNumber) => {
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/planter/${estateNumber}`);
+      const response = await axios.get(`http://127.0.0.1:8000/planter/${estateNumber}/`);
       setData(response.data);
       console.log(response.data);
 
@@ -82,13 +82,13 @@ function UpdateForm() {
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <div className="estnum_search">
                 <Form.Group as={Col} md="7">
-                  <Form.Label>Estate Number</Form.Label>
+                  <Form.Label>Estate Id</Form.Label>
                   <di className="estnum_search_estate">
                   <Form.Control
                     required
                     type="number"
                     id="estate_number"
-                    value={inputs.estate_number || ""}
+                    //value={inputs.estate_number || ""}
                     onChange={handleChange}
                   />
                   <Form.Control.Feedback type="invalid">
