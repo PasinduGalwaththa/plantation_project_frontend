@@ -1,18 +1,12 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./UpdateForm.css";
-import Sidebar1 from '../../Components/Sidebar/Sidebar1'
 
 import Table from 'react-bootstrap/Table';
 import moment from "moment";
-import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 //import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
 //import InputGroup from "react-bootstrap/InputGroup";
 //import Row from "react-bootstrap/Row";
-import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
-import FormGroup from "react-bootstrap/esm/FormGroup";
-import MaskedFormControl from "react-bootstrap-maskedinput";
 import axios from "axios";
 import "./SetArrivalscss.css";
 //import data from "./mock-data.json"
@@ -84,7 +78,6 @@ export const SetArrivals = () => {
   };
 
   const handleSubmit = async (event) => {
-    const form = event.currentTarget;
 
     //console.log(addFormData);
     event.preventDefault();
@@ -188,7 +181,6 @@ export const SetArrivals = () => {
 
   return (
     <div className="form">
-       <div><Sidebar1/></div>
       <div>
        
         

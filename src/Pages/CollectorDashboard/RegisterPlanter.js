@@ -251,7 +251,10 @@ export const RegisterPlanter =()=>{
             <Button type="submit">Submit </Button>
           </Form>
         </div>
+        
       </div>
+
+     
     );
 }
 

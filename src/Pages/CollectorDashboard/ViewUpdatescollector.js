@@ -7,8 +7,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Sidebar1 from '../../Components/Sidebar/Sidebar1'
-import { Columns, FileX } from 'lucide-react';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -45,7 +43,6 @@ const rows = [
 export default function CustomizedTables() {
   return (
     <div  > 
-    <div ><Sidebar1/></div>
     
     <div style={{padding:"0% 60%", position:'relative',margin:'-600px' }}>
     <div>

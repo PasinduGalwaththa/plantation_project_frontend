@@ -3,12 +3,9 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import Sidebar1 from '../../Components/Sidebar/Sidebar1'
 
 import React, { useState } from 'react';
 import axios from "axios";
-import { useEffect } from "react";
-import { Sidebar } from "react-pro-sidebar";
 
 
 function UpdateForm() {
@@ -67,6 +64,7 @@ function UpdateForm() {
       alert(res.data)
       setInputs({});
       setValidated(false);
+      setData(prevData => ({ ...prevData, ...inputs }));
     }).catch (err => {
       console.error(err)
     })
@@ -75,7 +73,6 @@ function UpdateForm() {
 
   return (
     <div className="updateform">
-      <div><Sidebar1/></div>
       <div className="container">   
       <div className="formitems">
         <h2>Update collection</h2>
@@ -173,9 +170,21 @@ function UpdateForm() {
         </Form>
       </div>
       <div>
-        pasindu
+      <div  class="card" style={{ width: '40rem',height:'20rem' }}>
+  <div class="card-body">
+    <h4>Update Details</h4>
+  <h5 className="name">name{data.first_name}</h5>
+                <h5 className="card-title">{data.last_name}</h5>
+                <h5 className="date">date{inputs.collected_date}</h5>
+                <h5 className="weight">weight{inputs.weight}</h5>
+                <h5 className="collector namet">collector name</h5>
+    
+    
+  </div>
+</div>
       </div>
       </div>
+      
 
    
     </div>

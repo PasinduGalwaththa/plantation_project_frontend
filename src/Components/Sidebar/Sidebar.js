@@ -10,16 +10,19 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import  { useContext} from "react";
+import  AuthContext  from "../../Pages/context/AuthContext";
 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 const App = () => {
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar className="app">
         <Menu>
           <MenuItem className="menu1" icon={<MenuRoundedIcon />}>
           <img margin src={process.env.PUBLIC_URL + '/logo.png'} alt="QuickPay Logo" style={{ width: "100px", height: "100px" }} />
-            <h2>QUICKPAY</h2>
+            <h2>Welcom </h2>
           </MenuItem>
           <MenuItem component={<Link to="/planterdashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
           <MenuItem component={<Link to="/viewupdates" className="link" />} icon={<ViewListIcon/>} > View Updates</MenuItem>

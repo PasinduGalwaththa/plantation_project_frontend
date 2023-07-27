@@ -1,11 +1,14 @@
-import React from 'react'
-import Sidebar from '../../Components/Sidebar/Sidebar'
+import React, { useEffect } from 'react'
+import { useContext } from "react";
+import  AuthContext  from "../../Pages/context/AuthContext";
 
 export default function PlanterDashboard() {
+  const {contextData } = useContext(AuthContext);
+
+
   return (
     <div>
-        <div><Sidebar/></div>
-        <div>planter dashboard</div>
+        <div>planter {contextData.user.username}</div>
     </div>
   )
 }

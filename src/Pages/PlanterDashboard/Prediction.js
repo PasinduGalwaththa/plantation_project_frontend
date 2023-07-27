@@ -1,6 +1,5 @@
 import React from "react";
 import './PlanterDashboard.css'
-import Sidebar from '../../Components/Sidebar/Sidebar'
 
 
 export const Predictions =()=>{
@@ -10,7 +9,6 @@ export const Predictions =()=>{
             <div className="form">
             
            
-            <div><Sidebar/></div>
             <div>planter predictions</div>
             
         </div>

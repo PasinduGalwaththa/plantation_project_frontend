@@ -12,8 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useContext } from 'react';
+import AuthContext from '../context/AuthContext';
 
-const backgroundImgUrl = 'https://example.com/path/to/your/background-image.jpg'; // Replace with your background image URL
+// Replace with your background image URL
 // ... (Rest of the code)
 
 
@@ -21,9 +23,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
         Harithaagros
-      </Link>{' '}
+      {' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -35,13 +36,21 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+
+  const [loginFormData , setLoginFormData] = React.useState({ username : "" , password : ""})
+  let { contextData } = useContext(AuthContext)
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('username'),
-      password: data.get('password'),
-    });
+    const loginData = {
+      username : data.get('username'),
+      password : data.get('password')
+    }
+    setLoginFormData(loginData)
+    console.log(loginData)
+    contextData.loginUser(loginData)
+    
   };
 
   return (
