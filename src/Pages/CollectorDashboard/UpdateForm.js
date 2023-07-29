@@ -12,15 +12,9 @@ function UpdateForm() {
   const [validated, setValidated] = useState(false);
   const [inputs,setInputs]=useState({});
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
-  const getCurrentDate = () => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
+  
 
   
   const fetchData = async (estateNumber) => {
@@ -34,6 +28,8 @@ function UpdateForm() {
       console.error(error);
     }
   };
+
+  
   
 
   const handleChange = (event) => {
@@ -43,6 +39,7 @@ function UpdateForm() {
   }
 
   const handleSearchClick = () => {
+    const estateNumber = document.getElementById("estate_number").value;
     fetchData(inputs.estate_number);
     
 }
@@ -80,7 +77,7 @@ function UpdateForm() {
         <div className="estnum_search">
                 <Form.Group as={Col} md="7">
                   <Form.Label>Estate Id</Form.Label>
-                  <di className="estnum_search_estate">
+                  <div className="estnum_search_estate">
                   <Form.Control
                     required
                     type="number"
@@ -92,29 +89,33 @@ function UpdateForm() {
                     Please enter estate number here.
                   </Form.Control.Feedback>
                   <Button onClick={handleSearchClick}>Search</Button>
-                  </di>
+                  
+                  
+                  </div>
                   
                 </Form.Group>
       
 
-         </div>          
+         </div>    
+        
+          
 
           <Row className="mb-3">
             <Form.Group as={Col} md="10" >
-              <Form.Label>{data.first_name ? data.first_name  + " " + data.last_name : ""}</Form.Label>
+              <Form.Label>{data[0] && data[0].first_name ? data[0].first_name + " " + data[0].last_name : ""}</Form.Label>
               {/* <Form.Control
-                required
-                type="text"
-                id="planter_name"
-                value={inputs.planter_name || ""}
-                onChange={handleChange}
-                pattern="^[A-Za-z]+$"
-                //placeholder="Planter Name"
-                // defaultValue="Name"
-              /> */}
+                // required
+                // type="text"
+                // id="planter_name"
+                // value={inputs.planter_name || ""}
+                // onChange={handleChange}
+                // pattern="^[A-Za-z]+$"
+                // //placeholder="Planter Name"
+                // // defaultValue="Name"
+              />
               <Form.Control.Feedback type="invalid">
                 Please enter name here.
-              </Form.Control.Feedback>
+              </Form.Control.Feedback> */}
             </Form.Group>
           </Row>
 
@@ -170,18 +171,7 @@ function UpdateForm() {
         </Form>
       </div>
       <div>
-      <div  class="card" style={{ width: '40rem',height:'20rem' }}>
-  <div class="card-body">
-    <h4>Update Details</h4>
-  <h5 className="name">name{data.first_name}</h5>
-                <h5 className="card-title">{data.last_name}</h5>
-                <h5 className="date">date{inputs.collected_date}</h5>
-                <h5 className="weight">weight{inputs.weight}</h5>
-                <h5 className="collector namet">collector name</h5>
-    
-    
-  </div>
-</div>
+      
       </div>
       </div>
       

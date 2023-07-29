@@ -255,6 +255,7 @@ export const SetArrivals = () => {
                           contact={contact}
                           handleEditClick={handleEditClick}
                           handleDeleteClick={handleDeleteClick}
+                          
                         />
                       )}
                     </React.Fragment>

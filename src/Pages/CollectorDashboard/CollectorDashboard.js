@@ -1,12 +1,15 @@
 import React from "react";
 import './UpdateForm.css';
+import { useContext } from "react";
+import  AuthContext  from "../../Pages/context/AuthContext";
 
 export const CollectorDashboard =()=>{
+    const {contextData } = useContext(AuthContext);
     return (
         <div className="form">
         
         
-        <div><h1>Lorem </h1></div>
+        <div>collector {contextData.user.username}</div>
     </div>
     );
 }

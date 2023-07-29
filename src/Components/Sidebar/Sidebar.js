@@ -27,7 +27,7 @@ const App = () => {
           <MenuItem component={<Link to="/planterdashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
           <MenuItem component={<Link to="/viewupdates" className="link" />} icon={<ViewListIcon/>} > View Updates</MenuItem>
           <MenuItem component={<Link to="/prediction" className="link" />} icon={<QueryStatsIcon/>}> Predictions </MenuItem>
-          <MenuItem component={<Link to="/weatherplanter" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
+          <MenuItem component={<Link to="/weather" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
           
           
           

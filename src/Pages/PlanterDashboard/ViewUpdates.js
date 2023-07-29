@@ -23,6 +23,7 @@ export const ViewUpdates =()=>{
     
     return(
         <div>
+          
             <div>view updates</div>
             <div className="form">
             

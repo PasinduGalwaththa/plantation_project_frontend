@@ -11,24 +11,22 @@ import FormGroup from 'react-bootstrap/esm/FormGroup';
 import MaskedFormControl  from 'react-bootstrap-maskedinput';
 import axios from "axios";
 
-export const RegisterPlanter =()=>{
+export const RegisterCollector =()=>{
 
     const [validated, setValidated] = useState(false);
     const [inputss,setInputss]=useState({
-      first_name: "",
+        first_name: "",
         last_name: "",
-        address: "",
-
-       telephone: "",
-       estatename: "",
-       teatype: "",
         nic: "",
-        
-       
-        
+        address: "",
+        email: "",
+        telephone: "",
         username: "",
         password: "",
-        usertype: "planter",
+        usertype: "collector",
+        
+        
+
     });
   
     const handleChange = (event) => {
@@ -67,7 +65,7 @@ export const RegisterPlanter =()=>{
       event.preventDefault();
       console.log(inputss);
       
-     axios.post('http://127.0.0.1:8000/planter/planter/' , inputss)
+     axios.post('http://127.0.0.1:8000/collector/collector/' , inputss)
       .then (res => {
         alert(res.data)
         setInputss({});
@@ -130,6 +128,34 @@ export const RegisterPlanter =()=>{
               
 
             </Row>
+            <Row className="mb-3">
+              <Form.Group as={Col} md="8" >
+                <FloatingLabel controlId='nic' label='NIC' className='mb-3'>
+                
+                
+                  <MaskedFormControl
+                    type="string"
+                    mask='111111111V'
+                    placeholder="NIC"
+                    //id="nic"
+                    autoComplete="nic"
+                    //aria-describedby="inputGroupPrepend"
+                    
+                    value={inputss.nic || ""}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please ebnter weight here.
+                  </Form.Control.Feedback>
+                
+
+                </FloatingLabel>
+               
+              </Form.Group>
+            </Row>
+
+
   
             <Row className="mb-3">
               <Form.Group as={Col} md="10" >
@@ -148,6 +174,31 @@ export const RegisterPlanter =()=>{
                 />
                 <Form.Control.Feedback type="invalid">
                   Please enter name here.
+                </Form.Control.Feedback>
+                  
+                </FloatingLabel>
+
+               
+              </Form.Group>
+            </Row>
+
+            <Row className="mb-3">
+              <Form.Group as={Col} md="10" >
+                <FloatingLabel controlId='email' label='email' className='mb-3'>
+               
+                <Form.Control
+                  required
+                  type="email"
+                  
+                  value={inputss.email || ""}
+                  onChange={handleChange}
+                  
+                  placeholder="email"
+                  autoComplete="email"
+                  // defaultValue="Name"
+                />
+                <Form.Control.Feedback type="invalid">
+                  Please enter email here.
                 </Form.Control.Feedback>
                   
                 </FloatingLabel>
@@ -188,97 +239,7 @@ export const RegisterPlanter =()=>{
               </Form.Group>
             </Row>
 
-            <Row className="mb-3">
-              <Form.Group as={Col} md="10" >
-                <FloatingLabel controlId='email' label='email' className='mb-3'>
-               
-                <Form.Control
-                  required
-                  type="email"
-                  
-                  value={inputss.email || ""}
-                  onChange={handleChange}
-                  
-                  placeholder="email"
-                  autoComplete="email"
-                  // defaultValue="Name"
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please enter email here.
-                </Form.Control.Feedback>
-                  
-                </FloatingLabel>
-
-               
-              </Form.Group>
-            </Row>
-            
-
-
-            <Row className="mb-3">
-            <Form.Group as={Col} md="8">
-              <FloatingLabel controlId='estatename' label='Estate Name' className='mb-3'>
-                <Form.Control
-                  required
-                  type="text"
-                  value={inputss.estatename || ""}
-                  onChange={handleChange}
-                  placeholder="estate name"
-                  autoComplete="estate name"
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please enter estate name here.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-            </Form.Group>
-              <Form.Group as={Col} md="8">
-              <FloatingLabel controlId='teatype' label='Tea Type' className='mb-3'>
-                <Form.Control
-                  required
-                  type="text"
-
-                  value={inputss.teatype || ""}
-                  onChange={handleChange}
-                  placeholder="tea type"
-                  autoComplete="tea type"
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please enter tea type here.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-            </Form.Group>
-
-
-              
-            </Row>
-  
-            <Row className="mb-3">
-              <Form.Group as={Col} md="8" >
-                <FloatingLabel controlId='nic' label='NIC' className='mb-3'>
-                
-                
-                  <MaskedFormControl
-                    type="string"
-                    mask='111111111V'
-                    placeholder="NIC"
-                    //id="nic"
-                    autoComplete="nic"
-                    //aria-describedby="inputGroupPrepend"
-                    
-                    value={inputss.nic || ""}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please ebnter weight here.
-                  </Form.Control.Feedback>
-                
-
-                </FloatingLabel>
-               
-              </Form.Group>
-            </Row>
-
+             
             <Row className="mb-3">
               <Form.Group as={Col} md="10" >
                 <FloatingLabel controlId='username' label='username' className='mb-3'>
@@ -291,11 +252,11 @@ export const RegisterPlanter =()=>{
                   onChange={handleChange}
                   
                   placeholder="username"
-                  autoComplete="usename"
+                  autoComplete="username"
                   // defaultValue="Name"
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please enter name here.
+                  Please enter username here.
                 </Form.Control.Feedback>
                   
                 </FloatingLabel>
@@ -319,7 +280,7 @@ export const RegisterPlanter =()=>{
                   // defaultValue="Name"
                 />
                 <Form.Control.Feedback type="invalid">
-                  Please enter name here.
+                  Please enter password here.
                 </Form.Control.Feedback>
                   
                 </FloatingLabel>
@@ -327,13 +288,14 @@ export const RegisterPlanter =()=>{
                
               </Form.Group>
             </Row>
+
+           
+  
+            {/* <input type="hidden" id="usertype" name="usertype" value="collector" /> */}
            
             <Button type="submit">Submit </Button>
           </Form>
-          
         </div>
-        
-        
         
       </div>
 
@@ -341,4 +303,4 @@ export const RegisterPlanter =()=>{
     );
 }
 
-export default RegisterPlanter;
+export default RegisterCollector;
