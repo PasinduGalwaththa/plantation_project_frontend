@@ -1,3 +1,4 @@
+
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -39,7 +40,6 @@ function UpdateForm() {
   }
 
   const handleSearchClick = () => {
-    const estateNumber = document.getElementById("estate_number").value;
     fetchData(inputs.estate_number);
     
 }
@@ -102,20 +102,22 @@ function UpdateForm() {
 
           <Row className="mb-3">
             <Form.Group as={Col} md="10" >
-              <Form.Label>{data[0] && data[0].first_name ? data[0].first_name + " " + data[0].last_name : ""}</Form.Label>
-              {/* <Form.Control
-                // required
-                // type="text"
-                // id="planter_name"
-                // value={inputs.planter_name || ""}
-                // onChange={handleChange}
-                // pattern="^[A-Za-z]+$"
-                // //placeholder="Planter Name"
-                // // defaultValue="Name"
+            <Form.Label>
+  {data[0] && data[0].first_name ? data[0].first_name + " " + data[0].last_name : ""}
+</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                id="planter_name"
+                value={inputs.planter_name || ""}
+                onChange={handleChange}
+                pattern="^[A-Za-z]+$"
+                //placeholder="Planter Name"
+                // defaultValue="Name"
               />
               <Form.Control.Feedback type="invalid">
                 Please enter name here.
-              </Form.Control.Feedback> */}
+              </Form.Control.Feedback>
             </Form.Group>
           </Row>
 
