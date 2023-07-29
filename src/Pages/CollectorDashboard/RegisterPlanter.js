@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './UpdateForm.css';
+
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -82,7 +82,7 @@ export const RegisterPlanter =()=>{
     return(
         <div className="form">
        
-        <div className="formitems">
+        <div className="formitems" style={{ display: "flex", justifyContent: "center", alignItems: "center",  }}>
           <h2>Register planter by collector </h2>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
@@ -160,7 +160,7 @@ export const RegisterPlanter =()=>{
               <Form.Group as={Col} md="8" >
                 <FloatingLabel controlId='telephone' label='telephone' className='mb-3'>
              
-                
+                 
                   < MaskedFormControl
 
 

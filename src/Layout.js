@@ -12,7 +12,7 @@ const userType = contextData.user.userType;
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      {userType === "planter" ? <Sidebar /> : <Sidebar1/>}
+      <Sidebar/>
       {/* <Sidebar /> */}
    
         

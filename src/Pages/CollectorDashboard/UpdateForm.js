@@ -24,6 +24,15 @@ function UpdateForm() {
       const response = await axios.get(`http://127.0.0.1:8000/planter/${estateNumber}/`);
       setData(response.data);
       console.log(response.data);
+      if (response.data[0]) {
+        setInputs((values) => ({
+          ...values,
+          planter_name: `${response.data[0].first_name} ${response.data[0].last_name}`,
+          // Also store the first_name and last_name in separate fields if needed
+          first_name: response.data[0].first_name,
+          last_name: response.data[0].last_name,
+        }));
+      }
 
     } catch (error) {
       console.error(error);
@@ -82,7 +91,7 @@ function UpdateForm() {
                     required
                     type="number"
                     id="estate_number"
-                    //value={inputs.estate_number || ""}
+                    value={inputs.estate_number || ""}
                     onChange={handleChange}
                   />
                   <Form.Control.Feedback type="invalid">
@@ -105,6 +114,8 @@ function UpdateForm() {
             <Form.Label>
   {data[0] && data[0].first_name ? data[0].first_name + " " + data[0].last_name : ""}
 </Form.Label>
+<Form.Control type="hidden" id="first_name" value={data[0]?.first_name || ''} />
+      <Form.Control type="hidden" id="last_name" value={data[0]?.last_name || ''} />
               <Form.Control
                 required
                 type="text"
@@ -115,9 +126,7 @@ function UpdateForm() {
                 //placeholder="Planter Name"
                 // defaultValue="Name"
               />
-              <Form.Control.Feedback type="invalid">
-                Please enter name here.
-              </Form.Control.Feedback>
+              
             </Form.Group>
           </Row>
 

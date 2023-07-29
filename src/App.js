@@ -6,7 +6,7 @@ import UpdateForm from "../src/Pages/CollectorDashboard/UpdateForm";
 import RegisterPlanter from './Pages/CollectorDashboard/RegisterPlanter';
 import SetArrivals from './Pages/CollectorDashboard/SetArrivals';
 import Predictions from './Pages/PlanterDashboard/Prediction';
-import ViewUpdates from './Pages/PlanterDashboard/ViewUpdates';
+import ViewUpdates from './Pages/PlanterDashboard/ViewUpdates/ViewUpdates';
 import Login from './Pages/Login/Login';
 import ViewUpdatescollector from './Pages/CollectorDashboard/ViewUpdatescollector';
 
@@ -27,7 +27,7 @@ function App() {
         
         <Route path='/planterdashboard' element={<PrivateRoute><Layout><PlanterDashboard/></Layout></PrivateRoute>}/>
         <Route path='/updatefrom' element={<PrivateRoute><Layout><UpdateForm/></Layout></PrivateRoute>}/>
-        <Route path='/registerplanter' element={<PrivateRoute><Layout></Layout><RegisterPlanter/></PrivateRoute>}/>
+        <Route path='/registerplanter' element={<PrivateRoute><RegisterPlanter/></PrivateRoute>}/>
         <Route path='/weather' element={<PrivateRoute><Layout><Weather/></Layout></PrivateRoute>}/>
         <Route path='/setarrivals' element={<PrivateRoute><Layout><SetArrivals/></Layout></PrivateRoute>}/>
         <Route path='/prediction' element={<PrivateRoute><Layout><Predictions/></Layout></PrivateRoute>}/>
