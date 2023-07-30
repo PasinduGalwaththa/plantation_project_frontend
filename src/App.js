@@ -17,6 +17,7 @@ import PrivateRoute from './Pages/utils/PrivateRoute.js';
 import { AuthProvider } from './Pages/context/AuthContext';
 import Layout from './Layout';
 import RegisterCollector from './Pages/CollectorDashboard/RegisterCollector';
+import PaymentsCollector from './Pages/CollectorDashboard/PaymentsCollector';
 
 function App() {
   return (
@@ -28,12 +29,13 @@ function App() {
         <Route path='/planterdashboard' element={<PrivateRoute><Layout><PlanterDashboard/></Layout></PrivateRoute>}/>
         <Route path='/updatefrom' element={<PrivateRoute><Layout><UpdateForm/></Layout></PrivateRoute>}/>
         <Route path='/registerplanter' element={<PrivateRoute><RegisterPlanter/></PrivateRoute>}/>
-        <Route path='/weather' element={<PrivateRoute><Layout><Weather/></Layout></PrivateRoute>}/>
+        <Route path='/weatherplanter' element={<PrivateRoute><Layout><Weather/></Layout></PrivateRoute>}/>
         <Route path='/setarrivals' element={<PrivateRoute><Layout><SetArrivals/></Layout></PrivateRoute>}/>
         <Route path='/prediction' element={<PrivateRoute><Layout><Predictions/></Layout></PrivateRoute>}/>
         <Route path='/viewupdates' element={<PrivateRoute><Layout><ViewUpdates/></Layout></PrivateRoute>}/>
         <Route path='/collectordashboard' element={<PrivateRoute><Layout><CollectorDashboard/></Layout></PrivateRoute>}/>
         <Route path='/viewupdatescollector' element={<PrivateRoute><Layout><ViewUpdatescollector /></Layout></PrivateRoute>} />
+        <Route path='/paymenttransfer' element={<PrivateRoute><Layout><PaymentsCollector/></Layout></PrivateRoute>} />
         <Route path='/registercollector' element={<RegisterCollector/>}/>
         <Route path='/login' element={<Login/>}/>
       </Routes>

@@ -1,18 +1,21 @@
 .updateform{
   display: flex;
   flex-direction: row;
+  
+ 
 }
 
 .container{
   display: flex;
   flex-direction: row;
   width: 100%;
+  padding-left: 100px;
 
 }
 
 .formitems{
     padding-top: 20px;
-    width: 50%;
+    width: 100%;
 }
 
 .estnum_search {
@@ -36,7 +39,14 @@
   flex: 0;
 }
 
+.transparent-card {
+  border:1px solid rgb(137, 106, 106) ; /* Remove the border */
+  background-color: transparent; /* Set the background color to transparent */
+  box-shadow: none; /* Remove any box-shadow */
+  padding-bottom: 6px;
+  
 
+}
 
 
 

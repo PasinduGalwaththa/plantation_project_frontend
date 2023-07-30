@@ -20,8 +20,11 @@ export const AuthProvider = ({ children }) => {
   const savedUsers = authTokensString ? jwtDecode(authTokensString) : null;
   const [authTokens, setAuthTokens] = useState(savedAuthTokens);
   const [user, setUser] = useState(savedUsers);
+  const [id , setId] = useState(null);
   const [loading, setLoading] = useState(true);
   const Navigate = useNavigate();
+
+
 
   const loginUser = (data) => {
     axios
@@ -90,6 +93,7 @@ export const AuthProvider = ({ children }) => {
     authTokens: authTokens,
     loginUser: loginUser,
     logOutUser: logOutUser,
+    id: id,
   };
 
   return (

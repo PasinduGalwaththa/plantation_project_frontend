@@ -12,10 +12,13 @@ import "./SetArrivalscss.css";
 //import data from "./mock-data.json"
 import ReadOnlyRow from "../../Components/ReadOnlyRow";
 import EditableRow from "../../Components/EditableRow";
+import { useContext } from "react";
+import  AuthContext  from "../../Pages/context/AuthContext";
 
 export const SetArrivals = () => {
   const [currentDay, setCurrentDay] = useState(""); // Get the current day
   const [contacts, setContacts] = useState(new Array(0));
+  const {contextData } = useContext(AuthContext);
 
   
  
@@ -181,6 +184,7 @@ export const SetArrivals = () => {
 
   return (
     <div className="form">
+      <div>collector {contextData.user.username}</div>
       <div>
        
         

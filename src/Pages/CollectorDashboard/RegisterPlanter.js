@@ -20,6 +20,7 @@ export const RegisterPlanter =()=>{
         address: "",
 
        telephone: "",
+       email: "",
        estatename: "",
        teatype: "",
         nic: "",
@@ -70,7 +71,7 @@ export const RegisterPlanter =()=>{
      axios.post('http://127.0.0.1:8000/planter/planter/' , inputss)
       .then (res => {
         alert(res.data)
-        setInputss({});
+        // setInputss({});
        setValidated(false);
       }).catch (err => {
         console.error(err)
@@ -83,7 +84,7 @@ export const RegisterPlanter =()=>{
         <div className="form">
        
         <div className="formitems" style={{ display: "flex", justifyContent: "center", alignItems: "center",  }}>
-          <h2>Register planter by collector </h2>
+          <h2>planter Registration</h2>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
                 <FormGroup as={Col} >

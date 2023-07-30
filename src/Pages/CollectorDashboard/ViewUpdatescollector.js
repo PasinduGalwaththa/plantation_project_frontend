@@ -1,83 +1,63 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import React, { useContext, useState, useEffect } from 'react';
+import AuthContext from '../context/AuthContext';
+import axios from 'axios';
+import { API_ENDPOINTS } from '../../api';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import { Space } from 'antd';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.blue,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+function ViewUpdates() {
+  const { contextData } = useContext(AuthContext);
+  const [updates, setUpdates] = useState([]);
+  const [selectedRows, setSelectedRows] = useState([]);
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 2,
-  },
-}));
+  async function getUpdates(id) {
+    try {
+      const response1 = await axios.get(`http://127.0.0.1:8000/collector/getbyid/${id}`);
+      const collectorId = response1.data.id;
+      const response2 = await axios.get(`http://127.0.0.1:8000/updates/getbyidcollector/${collectorId}`);
+      setUpdates(response2.data);
+      console.log(response2.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+  useEffect(() => {
+    getUpdates(contextData.user.userid);
+  }, []);
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, ),
-  createData('Ice cream sandwich', 237, 9.0, ),
-  createData('Eclair', 262, 16.0, ),
-  createData('Cupcake', 305, 3.7, ),
-  createData('Gingerbread', 356, 16.0,),
-];
 
-export default function CustomizedTables() {
   return (
-    <div  > 
-    
-    <div style={{padding:"0% 60%", position:'relative',margin:'-600px' }}>
-    <div>
-        date
-        
-    </div>
-    
-    <TableContainer component={Paper}>
-      <Table sx={{}} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Estate id</StyledTableCell>
-            <StyledTableCell align="right">Planter Name</StyledTableCell>
-            <StyledTableCell align="right">Weigh</StyledTableCell>
-           
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
+    <>
+      <div>ViewUpdates {contextData.user.userid}</div>
+      <br/> <br/>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
             
-             
-            </StyledTableRow>
+            <th>Planter</th>
+            <th>Collected date</th>
+            <th>collector</th>
+            <th>weight</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          {updates.map((update, index) => (
+            <tr key={index}>
+              <td>{update.planter}</td>
+              <td>{update.collector}</td>
+              <td>{update.collected_date}</td>
+              <td>{update.weight}</td>
+              <td></td>
+            </tr>
           ))}
-        </TableBody>
+        </tbody>
       </Table>
-    </TableContainer>
-
-    </div>
-    
-    </div>
+      
+    </>
   );
 }
+
+export default ViewUpdates;

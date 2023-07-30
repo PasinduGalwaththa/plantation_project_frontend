@@ -6,15 +6,14 @@ import AuthContext from "./Pages/context/AuthContext";
 
 const Layout = ({ children }) => 
 { const {contextData } = useContext(AuthContext);
-console.log(contextData);
-const userType = contextData.user.userType;
+const userType = contextData.user.usertype;
+
 
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      <Sidebar/>
-      {/* <Sidebar /> */}
-   
+      {userType === "planter" && <Sidebar/>}    
+      {userType === "collector" && <Sidebar1/>}    
         
       <div style={{ flex: 1, padding: "16px" }}>{children}</div>
       {/* The children will be the content that you want to render in the middle */}
