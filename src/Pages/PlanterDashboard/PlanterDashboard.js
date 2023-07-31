@@ -10,6 +10,7 @@ export default function PlanterDashboard() {
   return (
     <div>
         <div>planter {contextData.user.username}</div>
+        <div>{contextData.user.usertype}</div>
     </div>
   )
 }

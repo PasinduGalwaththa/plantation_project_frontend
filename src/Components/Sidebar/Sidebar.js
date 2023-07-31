@@ -12,10 +12,12 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import  { useContext} from "react";
 import  AuthContext  from "../../Pages/context/AuthContext";
+import PreviewIcon from '@mui/icons-material/Preview';
 
 import { BrowserRouter, Link } from 'react-router-dom';
 const App = () => {
 
+  const { contextData } = useContext(AuthContext);
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar className="app">
@@ -28,7 +30,7 @@ const App = () => {
           <MenuItem component={<Link to="/viewupdates" className="link" />} icon={<ViewListIcon/>} > View Updates</MenuItem>
           <MenuItem component={<Link to="/prediction" className="link" />} icon={<QueryStatsIcon/>}> Payments </MenuItem>
           <MenuItem component={<Link to="/weather" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
-          
+          <MenuItem icon={<PreviewIcon/>} onClick={contextData.logOutUser}> Sign Out </MenuItem>
           
           
         </Menu>

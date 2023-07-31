@@ -12,6 +12,7 @@ export const CollectorDashboard =()=>{
         
         
         <div>collector {contextData.user.username}</div>
+        <div>{contextData.user.usertype}</div>
     </div>
     );
 }

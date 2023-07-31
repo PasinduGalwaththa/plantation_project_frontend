@@ -32,6 +32,7 @@ const App = () => {
           <MenuItem component={<Link to='/setarrivals' className="link" />} icon={<QueryStatsIcon/>}> Set Arrivals </MenuItem>
           <MenuItem component={<Link to="/weatherplanter" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
           <MenuItem component={<Link to="/viewupdatescollector" className="link" />} icon={<PreviewIcon/>}> View Updates </MenuItem>
+          <MenuItem icon={<PreviewIcon/>} onClick={contextData.logOutUser}> Sign Out </MenuItem>
         </Menu>
       </Sidebar>
      
@@ -39,17 +40,17 @@ const App = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-     <BrowserRouter> {/* Wrap the App component with BrowserRouter */}
-      <div>
-        <ProSidebarProvider>
-          <App />
-        </ProSidebarProvider>
-      </div>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <React.StrictMode>
+//      <BrowserRouter> {/* Wrap the App component with BrowserRouter */}
+//       <div>
+//         <ProSidebarProvider>
+//           <App />
+//         </ProSidebarProvider>
+//       </div>
+//     </BrowserRouter>
+//   </React.StrictMode>
+// );
 
 export default App;

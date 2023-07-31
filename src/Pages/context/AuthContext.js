@@ -36,12 +36,6 @@ export const AuthProvider = ({ children }) => {
           console.log("success");
           console.log(authTokens);
           localStorage.setItem("authTokens", JSON.stringify(response.data));
-          if (user.usertype === 'planter') {
-            Navigate("/planterdashboard");
-          } else if (user.usertype === 'collector') {
-            Navigate("/collectordashboard");
-          } else 
-            Navigate("/");
         } else {
           console.log("error");
         }
@@ -77,6 +71,24 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  useEffect(() => {
+    // Function to handle navigation based on user type
+    const handleNavigation = () => {
+      if (user && user.usertype === 'planter') {
+        Navigate("/planterdashboard");
+      } else if (user && user.usertype === 'collector') {
+        Navigate("/collectordashboard");
+      } else {
+        Navigate("/");
+      }
+    };
+
+    // Call the navigation function whenever the user state changes
+    if (user) {
+      handleNavigation();
+    }
+  }, [user]);
+  
   useEffect(() => {
     const fourMinutes = 4 * 60 * 1000;
     const interval = setInterval(() => {
