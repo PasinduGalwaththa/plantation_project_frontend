@@ -5,6 +5,10 @@ import { Form, Button, Table } from "react-bootstrap"; // Import react-bootstrap
 import './PlanterDashboard.css'
 import  AuthContext from "../context/AuthContext";
 import { Check , Close  } from "@mui/icons-material";
+import Navbar from "react-bootstrap/Navbar";
+import { Card } from 'react-bootstrap';
+import {  ListGroup } from "react-bootstrap";
+
 
 export const Predictions = () => {
 
@@ -108,45 +112,85 @@ export const Predictions = () => {
   
   
   
+  
   return (
     <div>
+      <div><Navbar bg="light" variant="light" expand="lg" style={{ width: "100%" }}>
+      <Navbar.Brand style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={process.env.PUBLIC_URL + '/ha.png'}
+            alt="Logo"
+            height="60"
+            style={{ maxHeight: "100%", marginRight: "10px" }} // Adjust the height as needed
+          />
+          <div style={{ borderLeft: "2px solid #ccc", height: "60px", margin: "0 10px" }}></div>
+          <h2 style={{ display: "inline", fontWeight: "bold" }}>Payments</h2>
+        </Navbar.Brand>
+        
+
+
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav" className="justify-content-end">
+          <Navbar.Text style={{ whiteSpace: "nowrap" }}>Planter <strong>{contextData.user.username}</strong></Navbar.Text>
+        </Navbar.Collapse>
+      </Navbar></div>
+
+      <div style={{ paddingTop: "20px" }}>
       <Button variant="primary" onClick={handleSubmit}>Get Payment</Button>
-      {getPayment &&
-      <>
-        <div> 
-            <h1>Payment Details</h1>
-            <h3>Amount need to be paid: {paymentDetails.calculated_amount}</h3>
-            <h3>Date: {paymentDetails.date}</h3>
-            <h3>Gross Weight: {paymentDetails.gross_weight}</h3>
-        </div> 
-        </>}
-      <Table striped bordered hover>
+        
+      </div>
+     
+      {getPayment && (
+  <Card style={{ marginTop: "20px" }}>
+    <Card.Body>
+      <Card.Title>Payment Details</Card.Title>
+      <ListGroup variant="flush">
+            
+            <ListGroup.Item style={{ fontSize: "18px" }}><strong>Date:</strong> {paymentDetails.date}</ListGroup.Item>
+            <ListGroup.Item style={{ fontSize: "18px" }}><strong>Gross Weight:</strong> {paymentDetails.gross_weight}kg</ListGroup.Item>
+            <ListGroup.Item style={{ fontSize: "18px" }}><strong>Amount need to be paid:</strong> Rs{paymentDetails.calculated_amount}</ListGroup.Item>
+          </ListGroup>
+      
+    </Card.Body>
+  </Card>
+)}
+
+
+        <div style={{ borderRadius: "10px", paddingTop: "20px", overflow: "hidden" }}>
+        <div style={{ maxHeight: "300px", overflowY: "auto" }}>
+        <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Planter</th>
-            <th>Date</th>
-            <th>Calculated Amount</th>
-            <th>Gross Weight</th>
-            <th>Got Paid</th>
-            <th>Actions</th>
+            <th style={{ fontSize: "15px" }}>#</th>
+            <th style={{ fontSize: "15px" }}>Planter</th>
+            <th style={{ fontSize: "15px" }}>Date</th>
+            <th style={{ fontSize: "15px" }}>Calculated Amount</th>
+            <th style={{ fontSize: "15px" }}>Gross Weight</th>
+            <th style={{ fontSize: "15px" }}>Got Paid</th>
+            <th style={{ fontSize: "15px" }}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {paymentRecords.map((paymentRecord, index) => (
             <tr key={paymentDetails.id}>
-              <td>{index + 1}</td>
-              <td>{paymentRecord.planter}</td>
-              <td>{paymentRecord.date}</td>
-              <td>{paymentRecord.calculated_amount}</td>
-              <td>{paymentRecord.gross_weight}</td>
-              <td>{paymentRecord.got_paid ? <Check/> : <Close/>}</td>
+              <td style={{ fontSize: "13px" }}>{index + 1}</td>
+              <td style={{ fontSize: "13px" }}>{paymentRecord.planter}</td>
+              <td style={{ fontSize: "13px" }}>{paymentRecord.date}</td>
+              <td style={{ fontSize: "13px" }}>{paymentRecord.calculated_amount}</td>
+              <td style={{ fontSize: "13px" }}>{paymentRecord.gross_weight}</td>
+              <td style={{ fontSize: "13px" }}>{paymentRecord.got_paid ? <Check/> : <Close/>}</td>
               <td><Button variant="outline-primary" onClick={() => handleClickReceived(paymentRecord.id)}>Received</Button></td>
             </tr>
           ))}
         </tbody>
       </Table>
 
+          
+        </div>
+      
+
+        </div>
+       
        
     </div>
   );

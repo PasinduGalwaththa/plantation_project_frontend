@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
+import  logo from '../../assets/ha.png'
 
 // Replace with your background image URL
 // ... (Rest of the code)
@@ -22,8 +23,8 @@ import AuthContext from '../context/AuthContext';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-        Harithaagros
+      {''}
+      
       {' '}
       {new Date().getFullYear()}
       {'.'}
@@ -54,7 +55,8 @@ export default function SignIn() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <div>
+      <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -66,9 +68,9 @@ export default function SignIn() {
             
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          
+            <img src={logo} alt="logo" width="120" height="90" />
+            <br/>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -107,14 +109,11 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
+                <Link href="/registration" variant="body2">
+                  Register As a new User
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
               </Grid>
             </Grid>
           </Box>
@@ -122,5 +121,8 @@ export default function SignIn() {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
+      
+    </div>
+    
   );
 }

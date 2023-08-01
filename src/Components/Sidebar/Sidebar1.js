@@ -14,7 +14,7 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { useContext} from "react";
 import  AuthContext  from "../../Pages/context/AuthContext";
-
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const App = () => {
   const {contextData } = useContext(AuthContext);
@@ -24,15 +24,15 @@ const App = () => {
       <Sidebar className="app">
         <Menu>
           <MenuItem className="menu1" icon={<MenuRoundedIcon />}>
-          <img margin src={process.env.PUBLIC_URL + '/logo.png'} alt="QuickPay Logo" style={{ width: "100px", height: "100px" }} />
+          
             <h2>Welcome </h2>
           </MenuItem>
-          <MenuItem component={<Link to="/collectordashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
-          <MenuItem component={<Link to='/updatefrom' className="link" />} icon={<ViewListIcon/>} > Updates</MenuItem>
-          <MenuItem component={<Link to='/setarrivals' className="link" />} icon={<QueryStatsIcon/>}> Set Arrivals </MenuItem>
-          <MenuItem component={<Link to="/weatherplanter" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
-          <MenuItem component={<Link to="/viewupdatescollector" className="link" />} icon={<PreviewIcon/>}> View Updates </MenuItem>
-          <MenuItem icon={<PreviewIcon/>} onClick={contextData.logOutUser}> Sign Out </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to="/collectordashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to='/updatefrom' className="link" />} icon={<ViewListIcon/>} > Updates</MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to='/setarrivals' className="link" />} icon={<QueryStatsIcon/>}> Set Arrivals </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }}component={<Link to="/weatherplanter" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to="/viewupdatescollector" className="link" />} icon={<PreviewIcon/>}> View Updates </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} icon={<LogoutIcon/>} onClick={contextData.logOutUser}> Sign Out </MenuItem>
         </Menu>
       </Sidebar>
      

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./UpdateForm.css";
-
+import Navbar from "react-bootstrap/Navbar";
 import Table from 'react-bootstrap/Table';
 import moment from "moment";
 import Button from "react-bootstrap/Button";
@@ -14,6 +14,7 @@ import ReadOnlyRow from "../../Components/ReadOnlyRow";
 import EditableRow from "../../Components/EditableRow";
 import { useContext } from "react";
 import  AuthContext  from "../../Pages/context/AuthContext";
+
 
 export const SetArrivals = () => {
   const [currentDay, setCurrentDay] = useState(""); // Get the current day
@@ -184,19 +185,37 @@ export const SetArrivals = () => {
 
   return (
     <div className="form">
-      <div>collector {contextData.user.username}</div>
+      <div><Navbar bg="light" variant="light" expand="lg" style={{ width: "100%" }}>
+      <Navbar.Brand style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={process.env.PUBLIC_URL + '/ha.png'}
+            alt="Logo"
+            height="60"
+            style={{ maxHeight: "100%", marginRight: "10px" }} // Adjust the height as needed
+          />
+          <div style={{ borderLeft: "2px solid #ccc", height: "60px", margin: "0 10px" }}></div>
+          <h2 style={{ display: "inline", fontWeight: "bold" }}>Set Arrivals</h2>
+        </Navbar.Brand>
+        
+
+
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav" className="justify-content-end">
+          <Navbar.Text style={{ whiteSpace: "nowrap" }}>collector <strong>{contextData.user.username}</strong></Navbar.Text>
+        </Navbar.Collapse>
+      </Navbar></div>
+     
       <div>
        
         
       
         
-        <div className="div1">
-          <h1>Set Arrivals by collector</h1>
-        </div>
-        <div>Current Day: {currentDay}</div>
+        
+        <div>Today: {currentDay}</div>
 
-        <div className="addCollectionPoint">
-          <h2>Add a collection point</h2>
+        <div className="addCollectionPoint"  style={{ display: "flex", gap: "20px", padding: "12px",width: "50%"}}>
+          <h3>Add a collection point</h3>
+          
           <form onSubmit={handleSubmit}>
         <div className="row g-3 align-items-center">
           <div className="col-md-6">
@@ -212,7 +231,7 @@ export const SetArrivals = () => {
           </div>
 
 
-          <div className="col-md-6">
+          <div className="col-md-3">
             <label htmlFor="arrivaltime" className="form-label">Arrival Time</label>
             <input
               type="time"
@@ -232,7 +251,7 @@ export const SetArrivals = () => {
       </form>
         </div>
 
-        <div className="app-container">
+        <div className="table-container" style={{ marginTop: "-150px" }}>
           <form onSubmit={handleEditformSubmit}>
             <Table  bordered hover variant="blue">
               <thead>

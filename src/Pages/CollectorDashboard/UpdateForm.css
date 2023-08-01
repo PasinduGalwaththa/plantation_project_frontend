@@ -14,8 +14,17 @@
 }
 
 .formitems{
-    padding-top: 20px;
-    width: 100%;
+  background-color: rgba(127, 121, 121, 0.248);
+  padding: 10px;
+  margin-top:100px ;
+  margin-bottom: 5px;
+ 
+  margin-left: -210px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 10px;
+
 }
 
 .estnum_search {
@@ -47,6 +56,15 @@
   
 
 }
+/* Custom CSS to position the modal on the right side of the page */
+.modal-right .modal-dialog {
+  position: absolute;
+  right: 0;
+  margin-top:20px ;
+  margin-right: 10px; /* Adjust this value as needed */
+  width: 400px; /* Adjust this value to set the width of the modal */
+}
+
 
 
 

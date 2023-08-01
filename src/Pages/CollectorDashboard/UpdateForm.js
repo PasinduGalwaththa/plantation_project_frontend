@@ -7,6 +7,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import Navbar from "react-bootstrap/Navbar";
+import { Modal } from 'react-bootstrap'; 
 
 function UpdateForm() {
   const [validated, setValidated] = useState(false);
@@ -18,6 +20,14 @@ function UpdateForm() {
 
   const [data, setData] = useState({});
   const { contextData } = useContext(AuthContext);
+
+  const [showModal, setShowModal] = useState(false); // State variable to control the modal visibility
+  const [submittedDetails, setSubmittedDetails] = useState(null);
+
+  function handleShowModal(details) {
+    setSubmittedDetails(details);
+    setShowModal(true);
+  }
 
   const fetchData = async (estateNumber) => {
     try {
@@ -91,6 +101,7 @@ function UpdateForm() {
         setCollectedDate('');
         setWeight('');
         setValidated(false);
+        handleShowModal(res.data);
       }).catch(err => {
         console.error(err);
       });
@@ -98,11 +109,47 @@ function UpdateForm() {
 
   return (
     <div className="updateform">
-      <div>collector {contextData.user.username}</div>
-      <card className="transparent-card">
+      <div><Navbar bg="light" variant="light" expand="lg" style={{ width: "205%" }}>
+      <Navbar.Brand style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={process.env.PUBLIC_URL + '/ha.png'}
+            alt="Logo"
+            height="60"
+            style={{ maxHeight: "100%", marginRight: "10px" }} // Adjust the height as needed
+          />
+          <div style={{ borderLeft: "2px solid #ccc", height: "60px", margin: "0 10px" }}></div>
+          <h2 style={{ display: "inline", fontWeight: "bold" }}>Update collection</h2>
+        </Navbar.Brand>
+        
+
+
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav" className="justify-content-end">
+          <Navbar.Text style={{ whiteSpace: "nowrap" }}>collector <strong>{contextData.user.username}</strong></Navbar.Text>
+        </Navbar.Collapse>
+      </Navbar></div>
+      <Modal show={showModal} onHide={() => setShowModal(false)} dialogClassName="modal-right">
+      <Modal.Header closeButton>
+        <Modal.Title>Submitted Details</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {/* Display the submitted details inside the modal */}
+        <p>Estate Id: {submittedDetails?.estate}</p>
+        <p>Planter Id: {submittedDetails?.planter}</p>
+        <p>Collected Date: {submittedDetails?.collected_date}</p>
+        <p>Weight: {submittedDetails?.weight}</p>
+        {/* Add more details here if needed */}
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={() => setShowModal(false)}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
         <div className="container">
+        
           <div className="formitems">
-            <h2>Update collection</h2>
+            
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <div className="estnum_search">
                 <Form.Group as={Col} md="12">
@@ -127,9 +174,12 @@ function UpdateForm() {
                 <Form.Group as={Col} md="10" >
                   <Form.Label>
                     {data && data.first_name ? data.first_name + " " + data.last_name : ""}
+                    
+
                   </Form.Label>
                   <Form.Control type="hidden" id="first_name" value={data?.first_name || ''} />
                   <Form.Control type="hidden" id="last_name" value={data?.last_name || ''} />
+                  
                   
                 </Form.Group>
               </Row>
@@ -187,7 +237,7 @@ function UpdateForm() {
           <div>
           </div>
         </div>
-      </card>
+    
     </div>
   );
 }

@@ -13,7 +13,7 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import  { useContext} from "react";
 import  AuthContext  from "../../Pages/context/AuthContext";
 import PreviewIcon from '@mui/icons-material/Preview';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 import { BrowserRouter, Link } from 'react-router-dom';
 const App = () => {
 
@@ -23,14 +23,14 @@ const App = () => {
       <Sidebar className="app">
         <Menu>
           <MenuItem className="menu1" icon={<MenuRoundedIcon />}>
-          <img margin src={process.env.PUBLIC_URL + '/logo.png'} alt="QuickPay Logo" style={{ width: "100px", height: "100px" }} />
+          
             <h2>Welcome </h2>
           </MenuItem>
-          <MenuItem component={<Link to="/planterdashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
-          <MenuItem component={<Link to="/viewupdates" className="link" />} icon={<ViewListIcon/>} > View Updates</MenuItem>
-          <MenuItem component={<Link to="/prediction" className="link" />} icon={<QueryStatsIcon/>}> Payments </MenuItem>
-          <MenuItem component={<Link to="/weather" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
-          <MenuItem icon={<PreviewIcon/>} onClick={contextData.logOutUser}> Sign Out </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }}  component={<Link to="/planterdashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to="/viewupdates" className="link" />} icon={<ViewListIcon/>} > View Updates</MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to="/prediction" className="link" />} icon={<QueryStatsIcon/>}> Payments </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to="/weather" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} icon={<LogoutIcon/>} onClick={contextData.logOutUser}> Sign Out </MenuItem>
           
           
         </Menu>
