@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './UpdateForm.css';
+// import './UpdateForm.css';
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -80,8 +80,8 @@ export const RegisterCollector =()=>{
     return(
         <div className="form">
        
-        <div className="formitems">
-          <h2>Register planter by collector </h2>
+        <div className="formitems" >
+          <h2>Register plant by    collector </h2>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
                 <FormGroup as={Col} >

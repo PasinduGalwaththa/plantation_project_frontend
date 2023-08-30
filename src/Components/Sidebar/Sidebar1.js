@@ -27,7 +27,7 @@ const App = () => {
           
             <h2>Welcome </h2>
           </MenuItem>
-          <MenuItem style={{ fontSize: "18px" }} component={<Link to="/collectordashboard" className="link" />} icon={<SpeedOutlinedIcon/>}> Dashboard </MenuItem>
+          <MenuItem style={{ fontSize: "18px" }} component={<Link to="/collectordashboard" className="link" />} > </MenuItem>
           <MenuItem style={{ fontSize: "18px" }} component={<Link to='/updatefrom' className="link" />} icon={<ViewListIcon/>} > Updates</MenuItem>
           <MenuItem style={{ fontSize: "18px" }} component={<Link to='/setarrivals' className="link" />} icon={<QueryStatsIcon/>}> Set Arrivals </MenuItem>
           <MenuItem style={{ fontSize: "18px" }}component={<Link to="/weatherplanter" className="link" />} icon={<WbSunnyIcon/>}> Weather </MenuItem>
